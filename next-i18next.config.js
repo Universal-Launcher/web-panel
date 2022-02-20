@@ -5,4 +5,6 @@ module.exports = {
     locales: ["en", "fr"],
   },
   defaultNS: "main",
+  reloadOnPrerender: true,
+  serializeConfig: true,
 }

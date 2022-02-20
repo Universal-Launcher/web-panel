@@ -1,5 +1,6 @@
 import Link from "next/link"
 import React from "react"
+import styles from "./style.module.css"
 
 interface NavLinkProps {
   href: string
@@ -9,9 +10,7 @@ interface NavLinkProps {
 function NavLink({ href, children }: NavLinkProps) {
   return (
     <Link href={href}>
-      <a className="px-4 hover:text-orange-600 transition-colors duration-100 ease-in-out">
-        {children}
-      </a>
+      <a className={styles.navlink}>{children}</a>
     </Link>
   )
 }

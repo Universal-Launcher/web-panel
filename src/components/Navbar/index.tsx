@@ -2,27 +2,27 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import NavLink from "./Items"
 import ThemeToggler from "./ThemeToggler"
+import styles from "./style.module.css"
+import classNames from "classnames"
 
 function Navbar() {
   const { t } = useTranslation("main")
 
   return (
-    <nav className="border-b border-gray-300 dark:border-gray-700 md:mx-8">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="flex items-center justify-between h-20">
-          <div className="w-full justify-between flex">
+    <nav className={styles.navbar}>
+      <div className={styles.container}>
+        <div className={styles.flexbox}>
+          <div className={styles.nav}>
             <NavLink href="/">Universal-Launcher</NavLink>
+          </div>
 
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-center space-x-4">
-                <NavLink href="/">{t("navbar.home")}</NavLink>
+          <div className={classNames(styles.rightNav, styles.nav)}>
+            <NavLink href="/">{t("navbar.home")}</NavLink>
 
-                <NavLink href="/#">{t("navbar.about")}</NavLink>
-                <NavLink href="/login">{t("navbar.login")}</NavLink>
+            <NavLink href="/#">{t("navbar.about")}</NavLink>
+            <NavLink href="/#">{t("navbar.download")}</NavLink>
 
-                <ThemeToggler />
-              </div>
-            </div>
+            <ThemeToggler />
           </div>
         </div>
       </div>

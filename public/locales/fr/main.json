@@ -2,6 +2,14 @@
   "navbar": {
     "home": "Accueil",
     "about": "A propos",
-    "login": "Connexion"
+    "download": "Télécharger"
+  },
+  "footer": {
+    "created_by": "Créé par <2>Universal-Launcher Organisation</2>",
+    "copyright": "Tout le projet est sous licence GPLv3",
+    "links": {
+      "home": "Accueil",
+      "about": "A propos"
+    }
   }
 }

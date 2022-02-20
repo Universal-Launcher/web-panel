@@ -1,6 +1,8 @@
 import { useTheme } from "next-themes"
 import React from "react"
 import { Sun, Moon } from "react-feather"
+import styles from "./style.module.css"
+
 function ThemeToggler() {
   const { theme, setTheme } = useTheme()
 
@@ -11,10 +13,7 @@ function ThemeToggler() {
   }
 
   return (
-    <button
-      className="px-4 hover:text-orange-600 transition-colors duration-100 ease-out"
-      onClick={switchTheme}
-    >
+    <button className={styles.toggler} onClick={switchTheme}>
       {theme === "light" ? <Sun /> : <Moon />}
     </button>
   )

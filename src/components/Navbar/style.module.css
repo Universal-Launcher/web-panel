@@ -1,0 +1,23 @@
+.navbar {
+  @apply border-b border-neutral-300 dark:border-neutral-700 md:mx-8;
+
+  .container {
+    @apply max-w-7xl mx-auto px-8;
+
+    .flexbox {
+      @apply flex items-center justify-between h-20 w-full;
+
+      .nav {
+        @apply flex-1;
+      }
+
+      .rightNav {
+        @apply ml-10 flex items-center space-x-4 justify-end;
+      }
+    }
+  }
+
+  a {
+    @apply hover:text-orange-600 transition-colors duration-100 ease-in-out;
+  }
+}

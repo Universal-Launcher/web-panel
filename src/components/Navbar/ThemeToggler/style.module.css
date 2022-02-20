@@ -1,0 +1,3 @@
+.toggler {
+  @apply px-4 hover:text-orange-600 transition-colors duration-100 ease-out;
+}

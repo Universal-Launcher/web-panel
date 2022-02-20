@@ -2,6 +2,14 @@
   "navbar": {
     "home": "Home",
     "about": "About",
-    "login": "Login"
+    "download": "Download"
+  },
+  "footer": {
+    "created_by": "Created by <2>Universal-Launcher Organisation</2>",
+    "copyright": "All the project is under GPLv3 license",
+    "links": {
+      "home": "Home",
+      "about": "About"
+    }
   }
 }
