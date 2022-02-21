@@ -2,4 +2,8 @@
   @apply px-4 uppercase font-light;
   @apply dark:text-gray-300 hover:text-orange-600 text-gray-700;
   @apply transition-colors duration-100 ease-in-out;
+
+  &.active {
+    @apply text-orange-600;
+  }
 }

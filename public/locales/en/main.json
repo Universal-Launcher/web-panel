@@ -10,6 +10,19 @@
     "links": {
       "home": "Home",
       "about": "About"
-    }
+    },
+    "client_panel": "Client Panel"
+  },
+  "home": {
+    "title": "Home"
+  },
+  "about": {
+    "title": "About",
+    "description": "About this project and us"
+  },
+  "download": {
+    "title": "Download",
+    "description": "Download the launcher on your computer",
+    "button": "Download"
   }
 }

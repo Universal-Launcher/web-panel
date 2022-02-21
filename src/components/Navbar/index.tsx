@@ -13,16 +13,18 @@ function Navbar() {
       <div className={styles.container}>
         <div className={styles.flexbox}>
           <div className={styles.nav}>
-            <NavLink href="/">Universal-Launcher</NavLink>
+            <NavLink href="/" ignoreActive={true}>
+              Universal-Launcher
+            </NavLink>
           </div>
 
           <div className={classNames(styles.rightNav, styles.nav)}>
-            <NavLink href="/">{t("navbar.home")}</NavLink>
+            <NavLink href="/" strict={true}>
+              {t("navbar.home")}
+            </NavLink>
 
-            <NavLink href="/#">{t("navbar.about")}</NavLink>
-            <NavLink href="/#">{t("navbar.download")}</NavLink>
-
-            <ThemeToggler />
+            <NavLink href="/about">{t("navbar.about")}</NavLink>
+            <NavLink href="/download">{t("navbar.download")}</NavLink>
           </div>
         </div>
       </div>

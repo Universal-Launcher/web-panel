@@ -6,6 +6,7 @@ import Link from "next/link"
 import className from "classnames"
 
 import styles from "./styles.module.css"
+import ThemeToggler from "../Navbar/ThemeToggler"
 
 function Footer() {
   const { t } = useTranslation("main")
@@ -19,6 +20,12 @@ function Footer() {
           </li>
           <li>
             <Link href="/about">{t("footer.links.about")}</Link>
+          </li>
+          <li>
+            <Link href="/clientpanel">{t("footer.client_panel")}</Link>
+          </li>
+          <li>
+            <ThemeToggler />
           </li>
         </ul>
         <div className={styles.socialList}>

@@ -1,0 +1,4 @@
+.page-container {
+  @apply max-w-screen-xl min-h-screen flex flex-col items-center mx-auto;
+  @apply md:px-16 px-4;
+}
