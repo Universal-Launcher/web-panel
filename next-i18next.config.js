@@ -6,5 +6,5 @@ module.exports = {
   },
   defaultNS: "main",
   reloadOnPrerender: true,
-  serializeConfig: true,
+  serializeConfig: true
 }

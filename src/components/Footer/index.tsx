@@ -6,7 +6,7 @@ import Link from "next/link"
 import className from "classnames"
 
 import styles from "./styles.module.css"
-import ThemeToggler from "../Navbar/ThemeToggler"
+import ThemeToggler from "./ThemeToggler"
 
 function Footer() {
   const { t } = useTranslation("main")
@@ -15,15 +15,16 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <ul className={styles.topList}>
-          <li>
-            <Link href="/">{t("footer.links.home")}</Link>
-          </li>
-          <li>
-            <Link href="/about">{t("footer.links.about")}</Link>
-          </li>
-          <li>
-            <Link href="/clientpanel">{t("footer.client_panel")}</Link>
-          </li>
+          {[
+            { href: "/", text: t("footer.links.home") },
+            { href: "/about", text: t("footer.links.about") },
+            { href: "/clientpanel", text: t("footer.client_panel") },
+          ].map((item) => (
+            <li key={item.href}>
+              <Link href={item.href}>{item.text}</Link>
+            </li>
+          ))}
+
           <li>
             <ThemeToggler />
           </li>

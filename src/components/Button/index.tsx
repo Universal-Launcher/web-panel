@@ -1,14 +1,15 @@
-import React, { Component } from "react"
+import React, { ButtonHTMLAttributes } from "react"
 import { IconProps } from "react-feather"
 import styles from "./styles.module.css"
 
 interface ButtonProps {
   onClicked?: () => void
   children?: React.ReactNode
-  icon?: React.FC<IconProps>
+  icon?: React.FC<IconProps>,
+  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"]
 }
 
-function Button({ children, icon }: ButtonProps) {
+function Button({ children, icon, type }: ButtonProps) {
   const showIcon = () => {
     if (icon) {
       return React.createElement(
@@ -22,7 +23,7 @@ function Button({ children, icon }: ButtonProps) {
   }
 
   return (
-    <button className={styles.button}>
+    <button className={styles.button} type={type || "button"}>
       {showIcon()}
       {children}
     </button>

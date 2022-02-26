@@ -29,7 +29,7 @@ export function setGlobal(
   return typedAction("global/SET_GLOBAL", state)
 }
 
-type GlobalAction = ReturnType<typeof setGlobal> | ReturnType<typeof setTheme>
+type GlobalAction = ReturnType<typeof setGlobal>
 
 export function globalReducer(state = initialState, actions: GlobalAction): GlobalState {
   switch (actions.type) {

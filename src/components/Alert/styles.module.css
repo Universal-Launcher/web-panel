@@ -1,0 +1,53 @@
+.alert {
+  @apply rounded-md flex items-center justify-between;
+  @apply px-5 py-2 mb-4;
+  @apply border border-blue-500 text-blue-500;
+
+  .content {
+    @apply w-full flex items-center;
+  }
+
+  .icon {
+    @apply w-6 h-6 mr-2;
+  }
+
+  &-success {
+    @apply border-green-500 text-green-500;
+
+    .closeBtn {
+      @apply focus:ring-green-500;
+    }
+  }
+
+  &-error {
+    @apply border-red-500 text-red-500;
+
+    .closeBtn {
+      @apply focus:ring-red-500;
+    }
+  }
+  &-warning {
+    @apply border-yellow-600 text-yellow-600;
+
+    .closeBtn {
+      @apply focus:ring-yellow-600;
+    }
+  }
+
+  &-info {
+    @apply border-blue-500 text-blue-500;
+
+    .closeBtn {
+      @apply focus:ring-blue-500;
+    }
+  }
+
+  .closeBtn {
+    @apply -mr-1 flex-shrink-0 flex p-1 rounded-full sm:-mr-2;
+    @apply focus:outline-none focus:ring-2;
+
+    .closeIcon {
+      @apply h-5 w-5;
+    }
+  }
+}

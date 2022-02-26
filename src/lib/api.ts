@@ -1,9 +1,11 @@
 import axios from "axios"
 
-export const Axios = axios.create({
+export type EmptyObject = Record<string, never>
+
+export const API = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
 })
 
 export async function fetcher<T>(url: string): Promise<T> {
-  return await Axios.get(url).then((res) => res.data)
+  return await API.get(url).then((res) => res.data)
 }

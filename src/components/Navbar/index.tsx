@@ -1,7 +1,6 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import NavLink from "./Items"
-import ThemeToggler from "./ThemeToggler"
 import styles from "./style.module.css"
 import classNames from "classnames"
 

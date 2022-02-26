@@ -1,7 +1,7 @@
 .button {
   @apply rounded-md px-4 py-2;
   @apply text-white bg-orange-600;
-  @apply shadow-md shadow-orange-600;
+  @apply shadow-md;
 
   .icon {
     @apply mr-2 w-4 h-4 inline-block;

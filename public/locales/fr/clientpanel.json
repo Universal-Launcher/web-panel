@@ -1,0 +1,21 @@
+{
+  "login": {
+    "title": "Connexion",
+    "email": "Adresse Email",
+    "password": "Mot de passe",
+    "submitBtn": "Connexion"
+  },
+  "errors": {
+    "validation": {
+      "email": {
+        "invalid": "L'adresse mail est invalide."
+      },
+      "password": {
+        "required": "Le mot de passe est requis."
+      }
+    },
+    "auth": {
+      "not_found": "Utilisateur non-trouvé"
+    }
+  }
+}
