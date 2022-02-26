@@ -4,7 +4,13 @@ import { getUser } from "../../lib/auth"
 export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   let response = NextResponse.next()
 
-  if (req.nextUrl.pathname.includes("/clientpanel/login")) return response
+  console.log(req.nextUrl.pathname)
+
+  if (
+    req.nextUrl.pathname.includes("/clientpanel/login") ||
+    req.nextUrl.pathname.includes("/clientpanel/register")
+  )
+    return response
 
   try {
     await getUser()

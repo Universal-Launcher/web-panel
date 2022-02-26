@@ -1,48 +1,30 @@
 import { GetStaticProps } from "next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import Head from "next/head"
-import React from "react"
-import { useTranslation } from "react-i18next"
-import Footer from "../../components/Footer"
-
-import styles from "../../styles/pages/clientpanel/Login.module.css"
-import Input from "../../components/form/Input"
-import Button from "../../components/Button"
-import { LogIn } from "react-feather"
-import { useAuth } from "../../lib/auth/hooks"
-import { ErrorObject, isValidationError, parseValidationErrors } from "../../lib/errors"
-import axios from "axios"
-import Alert from "../../components/Alert"
 import Link, { LinkProps } from "next/link"
-import { Trans } from "next-i18next"
+import React from "react"
+import { UserPlus } from "react-feather"
+import { Trans, useTranslation } from "react-i18next"
+import Alert from "../../components/Alert"
+import Button from "../../components/Button"
+import Footer from "../../components/Footer"
+import Input from "../../components/form/Input"
+import PasswordChecker from "../../components/form/PasswordChecker"
+import { ErrorObject } from "../../lib/errors"
 
-function Login() {
+import styles from "../../styles/pages/clientpanel/Register.module.css"
+
+function Register() {
   const { t } = useTranslation("clientpanel")
 
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
+  const [confirmation, setConfirmation] = React.useState("")
   const [errors, setErrors] = React.useState<ErrorObject | undefined>(undefined)
-  const auth = useAuth()
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrors(undefined)
-
-    try {
-      await auth.login(email, password)
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (isValidationError(error.response)) {
-          setErrors(parseValidationErrors(error.response?.data))
-        } else {
-          if (error.response?.data?.error) {
-            const errors: ErrorObject = {}
-            errors["main"] = [error.response.data.error]
-            setErrors(errors)
-          }
-        }
-      }
-    }
   }
 
   const NextLnk = ({ href, children, ...props }: LinkProps & { children: React.ReactNode }) => {
@@ -56,7 +38,7 @@ function Login() {
   return (
     <>
       <Head>
-        <title>{t("login.title")}</title>
+        <title>{t("register.title")}</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -64,7 +46,7 @@ function Login() {
       <main className="page-container">
         <section className={styles.middleSection}>
           <form className={styles.box} onSubmit={handleFormSubmit}>
-            <h1 className={styles.title}>{t("login.title")}</h1>
+            <h1 className={styles.title}>{t("register.title")}</h1>
 
             {errors && errors["main"] ? (
               <Alert
@@ -82,7 +64,7 @@ function Login() {
 
             <Input
               id="email"
-              label={t("login.email")}
+              label={t("register.email")}
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -91,20 +73,36 @@ function Login() {
 
             <Input
               id="password"
-              label={t("login.password")}
+              label={t("register.password")}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               errors={errors ? errors["password"] : undefined}
+            >
+              <PasswordChecker
+                password={password}
+                onCheckChanged={(isValid) => {
+                  console.log(isValid)
+                }}
+              />
+            </Input>
+
+            <Input
+              id="confirmation"
+              label={t("register.confirmation")}
+              type="password"
+              value={confirmation}
+              onChange={(e) => setConfirmation(e.target.value)}
+              errors={errors ? errors["confirmation"] : undefined}
             />
 
-            <Button icon={LogIn} type="submit">
-              {t("login.submitBtn")}
+            <Button icon={UserPlus} type="submit">
+              {t("register.submitBtn")}
             </Button>
 
             <p className={styles.registerTips}>
-              <Trans t={t} i18nKey="login.no_account">
-                Don't have an account ? <NextLnk href="/clientpanel/register">Register</NextLnk>
+              <Trans t={t} i18nKey="register.already_account">
+                Already have an account ? <NextLnk href="/clientpanel/login">Login</NextLnk>
               </Trans>
             </p>
           </form>
@@ -119,8 +117,8 @@ function Login() {
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale as string, ["main", "clientpanel"])),
-    default: "default",
+    layout: "default",
   },
 })
 
-export default Login
+export default Register

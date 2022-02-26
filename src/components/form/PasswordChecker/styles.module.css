@@ -1,0 +1,11 @@
+.passwordChecker {
+  @apply grid w-full h-1 grid-cols-12 gap-4 rounded;
+
+  .item {
+    @apply h-full col-span-3 bg-green-500 rounded;
+  }
+}
+
+.checkText {
+  @apply mt-2 text-green-500;
+}

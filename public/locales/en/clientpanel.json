@@ -4,7 +4,8 @@
     "email": "Email Address",
     "password": "Password",
     "submitBtn": "Login",
-    "no_account": "Don't have an account ? <1>Register</1>"
+    "no_account": "Don't have an account ? <1>Register</1>",
+    "confirmation": "Confirm password"
   },
   "errors": {
     "validation": {
@@ -18,5 +19,13 @@
     "auth": {
       "not_found": "User not found"
     }
+  },
+  "register": {
+    "title": "Register",
+    "email": "Email Address",
+    "password": "Password",
+    "confirmation": "Confirm password",
+    "submitBtn": "Create account",
+    "already_account": "Already have an account ? <1>Login</1>"
   }
 }

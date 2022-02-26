@@ -1,3 +1,5 @@
+import { LayoutProps } from "../layouts"
+
 declare global {
   declare namespace NodeJS {
     export interface ProcessEnv {

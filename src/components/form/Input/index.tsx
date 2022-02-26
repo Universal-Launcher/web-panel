@@ -10,9 +10,10 @@ interface InputProps {
   errors?: string[]
   value?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  children?: React.ReactNode
 }
 
-function Input({ id, label, type, errors, value, onChange }: InputProps) {
+function Input({ id, label, type, errors, value, onChange, children }: InputProps) {
   const { t } = useTranslation("clientpanel")
 
   return (
@@ -27,6 +28,8 @@ function Input({ id, label, type, errors, value, onChange }: InputProps) {
             </p>
           ))
         : undefined}
+
+      {children}
     </div>
   )
 }
