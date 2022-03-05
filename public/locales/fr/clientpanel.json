@@ -3,19 +3,45 @@
     "title": "Connexion",
     "email": "Adresse Email",
     "password": "Mot de passe",
-    "submitBtn": "Connexion"
+    "submitBtn": "Connexion",
+    "no_account": "Vous n'avez pas de compte ? \n<1>S'inscrire</1>"
   },
   "errors": {
     "validation": {
       "email": {
-        "invalid": "L'adresse mail est invalide."
+        "invalid": "L'adresse mail est invalide.",
+        "required": "L'adresse e-mail est obligatoire."
       },
       "password": {
-        "required": "Le mot de passe est requis."
+        "required": "Le mot de passe est requis.",
+        "length": "Le mot de passe doit comporter au moins 8 caractères."
+      },
+      "username": {
+        "required": "Le nom d'utilisateur est requis."
+      },
+      "confirmation": {
+        "must_match": "La confirmation doit correspondre au mot de passe.",
+        "required": "La confirmation est requise."
+      },
+      "password_checker": {
+        "1": "Le mot de passe est trop court.",
+        "2": "Le mot de passe est trop faible.",
+        "3": "Le mot de passe est bon.",
+        "4": "Le mot de passe est fort."
       }
     },
     "auth": {
-      "not_found": "Utilisateur non-trouvé"
+      "not_found": "Utilisateur non-trouvé",
+      "already_exists": "Utilisateur déjà existant"
     }
+  },
+  "register": {
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "confirmation": "Confirmation",
+    "submitBtn": "Créer le compte",
+    "already_account": "Déjà un compte ? <1>Connexion</1>",
+    "email": "Adresse E-Mail",
+    "title": "S'inscrire"
   }
 }

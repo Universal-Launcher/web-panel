@@ -4,20 +4,35 @@
     "email": "Email Address",
     "password": "Password",
     "submitBtn": "Login",
-    "no_account": "Don't have an account ? <1>Register</1>",
-    "confirmation": "Confirm password"
+    "no_account": "Don't have an account ? <1>Register</1>"
   },
   "errors": {
     "validation": {
       "email": {
-        "invalid": "The email address is invalid."
+        "invalid": "The email address is invalid.",
+        "required": "The email address is required."
       },
       "password": {
-        "required": "The password is required."
+        "required": "The password is required.",
+        "length": "The password must be at least 8 characters long."
+      },
+      "username": {
+        "required": "The username is required."
+      },
+      "confirmation": {
+        "required": "The confirmation is required.",
+        "must_match": "The confirmation must match the password."
+      },
+      "password_checker": {
+        "1": "The password is too short.",
+        "2": "The password is too weak.",
+        "3": "The password is good.",
+        "4": "The password is strong."
       }
     },
     "auth": {
-      "not_found": "User not found"
+      "not_found": "User not found",
+      "already_exists": "User already exists"
     }
   },
   "register": {
@@ -26,6 +41,7 @@
     "password": "Password",
     "confirmation": "Confirm password",
     "submitBtn": "Create account",
-    "already_account": "Already have an account ? <1>Login</1>"
+    "already_account": "Already have an account ? <1>Login</1>",
+    "username": "Username"
   }
 }

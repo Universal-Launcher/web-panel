@@ -1,15 +1,18 @@
+import classNames from "classnames"
 import React, { ButtonHTMLAttributes } from "react"
 import { IconProps } from "react-feather"
 import styles from "./styles.module.css"
 
 interface ButtonProps {
-  onClicked?: () => void
+  onClick?: () => void
   children?: React.ReactNode
-  icon?: React.FC<IconProps>,
+  icon?: React.FC<IconProps>
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"]
+  className?: string
+  disabled?: boolean
 }
 
-function Button({ children, icon, type }: ButtonProps) {
+function Button({ children, icon, type, className, onClick, disabled }: ButtonProps) {
   const showIcon = () => {
     if (icon) {
       return React.createElement(
@@ -23,7 +26,12 @@ function Button({ children, icon, type }: ButtonProps) {
   }
 
   return (
-    <button className={styles.button} type={type || "button"}>
+    <button
+      className={classNames(styles.button, className)}
+      type={type || "button"}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {showIcon()}
       {children}
     </button>
