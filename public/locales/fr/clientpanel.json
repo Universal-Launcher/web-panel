@@ -24,6 +24,7 @@
         "required": "La confirmation est requise."
       },
       "password_checker": {
+        "0": "Le mot de passe est trop court.",
         "1": "Le mot de passe est trop court.",
         "2": "Le mot de passe est trop faible.",
         "3": "Le mot de passe est bon.",

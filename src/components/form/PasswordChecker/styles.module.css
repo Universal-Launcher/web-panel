@@ -4,6 +4,7 @@
   .item {
     @apply h-full col-span-3 bg-neutral-200 dark:bg-neutral-700 rounded;
 
+    &.colored-0,
     &.colored-1 {
       @apply bg-red-500;
     }
@@ -30,6 +31,7 @@
 .checkText {
   @apply mt-2 text-neutral-700 dark:text-neutral-200 text-sm;
 
+  &.colored-0,
   &.colored-1 {
     @apply text-red-500;
   }

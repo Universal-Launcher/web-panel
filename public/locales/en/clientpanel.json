@@ -24,6 +24,7 @@
         "must_match": "The confirmation must match the password."
       },
       "password_checker": {
+        "0": "The password is too short.",
         "1": "The password is too short.",
         "2": "The password is too weak.",
         "3": "The password is good.",

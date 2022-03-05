@@ -24,7 +24,6 @@ function PasswordChecker(props: PasswordCheckerProps) {
       o.push(res.feedback.warning)
     }
     setFeedback(o)
-
     props.onCheckChanged(res.score > 2)
   }, [props.password, props])
 
@@ -47,11 +46,11 @@ function PasswordChecker(props: PasswordCheckerProps) {
     <div className={styles.checkContainer}>
       <div className={styles.passwordChecker}>{showBars()}</div>
 
-      {score > 0 && (
+      {props.password.length > 0 && score >= 0 && (
         <div className={classNames(styles.checkText, styles[`colored-${score}`])}>
           <p>{t(`errors.validation.password_checker.${score}`)}</p>
 
-          <ul>{feedback && feedback.length > 0 && feedback.map((f, i) => <li key={i}>{f}</li>)}</ul>
+          <ul>{feedback && feedback.map((f, i) => <li key={i}>{f}</li>)}</ul>
         </div>
       )}
     </div>
