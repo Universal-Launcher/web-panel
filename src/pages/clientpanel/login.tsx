@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import Head from "next/head"
-import React from "react"
+import React, { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import Footer from "../../components/Footer"
 
@@ -15,14 +15,22 @@ import axios from "axios"
 import Alert from "../../components/Alert"
 import Link, { LinkProps } from "next/link"
 import { Trans } from "next-i18next"
+import { useRouter } from "next/router"
 
 function Login() {
   const { t } = useTranslation("clientpanel")
+  const router = useRouter()
 
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
   const [errors, setErrors] = React.useState<ErrorObject | undefined>(undefined)
   const auth = useAuth()
+
+  const [isFormValid, setIsFormValid] = React.useState(false)
+
+  useEffect(() => {
+    setIsFormValid(email.length > 0 && password.length > 0)
+  }, [email, password])
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -30,6 +38,13 @@ function Login() {
 
     try {
       await auth.login(email, password)
+
+      console.log("coucou")
+      if (router.query.redirect && typeof router.query.redirect === "string") {
+        router.push(router.query.redirect)
+      } else {
+        router.push("/clientpanel/")
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (isValidationError(error.response)) {
@@ -45,7 +60,7 @@ function Login() {
     }
   }
 
-  const NextLnk = ({ href, children, ...props }: LinkProps & { children: React.ReactNode }) => {
+  const NextLnk = ({ href, children }: LinkProps & { children: React.ReactNode }) => {
     return (
       <Link href={href || ""}>
         <a className={styles.link}>{children}</a>
@@ -98,13 +113,13 @@ function Login() {
               errors={errors ? errors["password"] : undefined}
             />
 
-            <Button icon={LogIn} type="submit">
+            <Button icon={LogIn} type="submit" disabled={!isFormValid}>
               {t("login.submitBtn")}
             </Button>
 
             <p className={styles.registerTips}>
               <Trans t={t} i18nKey="login.no_account">
-                Don't have an account ? <NextLnk href="/clientpanel/register">Register</NextLnk>
+                Doesn't have an account ? <NextLnk href="/clientpanel/register">Register</NextLnk>
               </Trans>
             </p>
           </form>

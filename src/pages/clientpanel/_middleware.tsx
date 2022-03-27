@@ -1,24 +1,28 @@
-import { NextFetchEvent, NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { getUser } from "../../lib/auth"
 
-export async function middleware(req: NextRequest, ev: NextFetchEvent) {
-  let response = NextResponse.next()
+export async function middleware(req: NextRequest) {
+  const response = NextResponse.next()
 
-  if (
+  const isAuthRoutes =
     req.nextUrl.pathname.includes("/clientpanel/login") ||
     req.nextUrl.pathname.includes("/clientpanel/register")
-  )
-    return response
 
   try {
     await getUser()
   } catch (error) {
-    const url = req.nextUrl.clone()
+    if (isAuthRoutes) {
+      return response
+    }
 
+    const url = req.nextUrl.clone()
     url.pathname = "/clientpanel/login"
     url.searchParams.set("redirect", req.nextUrl.pathname)
-    response = NextResponse.redirect(url)
+    return NextResponse.redirect(url)
   }
 
+  if (isAuthRoutes) {
+    return NextResponse.redirect("/clientpanel/")
+  }
   return response
 }

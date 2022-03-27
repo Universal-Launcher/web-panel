@@ -3,6 +3,7 @@ import { GetStaticProps } from "next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import Head from "next/head"
 import Link, { LinkProps } from "next/link"
+import { useRouter } from "next/router"
 import React, { useEffect } from "react"
 import { UserPlus } from "react-feather"
 import { Trans, useTranslation } from "react-i18next"
@@ -18,6 +19,7 @@ import styles from "../../styles/pages/clientpanel/Register.module.css"
 
 function Register() {
   const { t } = useTranslation("clientpanel")
+  const router = useRouter()
 
   const [formData, setFormData] = React.useState({
     email: "",
@@ -49,6 +51,12 @@ function Register() {
     try {
       await auth.register(formData)
       setErrors(undefined)
+
+      if (router.query.redirect && typeof router.query.redirect === "string") {
+        router.push(router.query.redirect)
+      } else {
+        router.push("/clientpanel/")
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (isValidationError(error.response)) {
@@ -64,7 +72,7 @@ function Register() {
     }
   }
 
-  const NextLnk = ({ href, children, ...props }: LinkProps & { children: React.ReactNode }) => {
+  const NextLnk = ({ href, children }: LinkProps & { children: React.ReactNode }) => {
     return (
       <Link href={href || ""}>
         <a className={styles.link}>{children}</a>

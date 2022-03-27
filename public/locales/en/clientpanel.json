@@ -4,7 +4,7 @@
     "email": "Email Address",
     "password": "Password",
     "submitBtn": "Login",
-    "no_account": "Don't have an account ? <1>Register</1>"
+    "no_account": "Doesn't have an account ? <1>Register</1>"
   },
   "errors": {
     "validation": {
