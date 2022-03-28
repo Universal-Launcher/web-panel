@@ -39,7 +39,6 @@ function Login() {
     try {
       await auth.login(email, password)
 
-      console.log("coucou")
       if (router.query.redirect && typeof router.query.redirect === "string") {
         router.push(router.query.redirect)
       } else {
@@ -56,6 +55,8 @@ function Login() {
             setErrors(errors)
           }
         }
+      } else {
+        console.error(error)
       }
     }
   }
