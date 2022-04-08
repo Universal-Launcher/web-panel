@@ -1,15 +1,21 @@
-import { AxiosResponse } from "axios"
 import React from "react"
-import { API, EmptyObject } from "../api"
-import { ValidationErrors } from "../errors"
+import { fetcher } from "../api"
 import { Session } from "./types"
 
 export async function logout(): Promise<void> {
-  await API.delete<EmptyObject>("/user/auth")
+  return await fetcher("/user/auth", {
+    method: "delete",
+  })
 }
 
-export async function login(email: string, password: string): Promise<AxiosResponse<Session>> {
-  return await API.post<Session>("/user/auth", { email, password })
+export async function login(email: string, password: string): Promise<Session> {
+  return await fetcher<Session>("/user/auth", {
+    method: "post",
+    body: {
+      email,
+      password,
+    },
+  })
 }
 
 interface RegisterParams {
@@ -19,26 +25,31 @@ interface RegisterParams {
   confirmation: string
 }
 
-export async function register(params: RegisterParams): Promise<AxiosResponse<Session>> {
-  return await API.post<Session>("/user/auth/create", params)
+export async function register(params: RegisterParams): Promise<Session> {
+  return await fetcher<Session>("/user/auth/create", {
+    method: "post",
+    body: params,
+  })
 }
 
-export async function getUser(): Promise<AxiosResponse<Session>> {
-  return await API.get<Session>("/user/auth")
+export async function getUser(): Promise<Session> {
+  return await fetcher<Session>("/user/auth")
 }
 
 const AuthContext = React.createContext<{
   user: Session | undefined
   mutateUser: () => Promise<any>
   logout: () => Promise<void>
-  login: (username: string, password: string) => Promise<AxiosResponse<Session>>
-  register: (params: RegisterParams) => Promise<AxiosResponse<Session>>
+  login: (username: string, password: string) => Promise<Session>
+  register: (params: RegisterParams) => Promise<Session>
+  getUser: () => Promise<Session>
 }>({
   user: undefined,
   mutateUser: async () => null,
   logout,
   login,
   register,
+  getUser,
 })
 
 export default AuthContext

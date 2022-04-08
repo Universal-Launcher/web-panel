@@ -1,20 +1,25 @@
 import React from "react"
 import "../styles/globals.css"
-import type { AppProps } from "next/app"
-import { Provider } from "react-redux"
-import { useStore } from "../store"
-import { ThemeProvider } from "next-themes"
-import PanelLayout from "../components/layouts/PanelLayout"
-import { LayoutProps, Layouts } from "../layouts"
+import type { AppContext, AppProps } from "next/app"
 import i18nextConfig from "../../next-i18next.config"
 import { appWithTranslation } from "next-i18next"
+import useSWR, { SWRConfig } from "swr"
+import { fetcher } from "../lib/api"
+import { Provider } from "react-redux"
+import { useStore } from "../store"
+import PanelLayout from "../components/layouts/PanelLayout"
+import { ThemeProvider } from "next-themes"
+import { Layouts } from "../layouts"
+import { default as NextApp } from "next/app"
+import cookies from "next-cookies"
 
-function App({ Component, pageProps, router }: AppProps) {
+function App({ pageProps, Component }: AppProps & { token: string }) {
   const store = useStore(pageProps.initialReduxState)
+  useSWR("/", fetcher)
 
   let page: JSX.Element
 
-  if ((pageProps as LayoutProps).layout === Layouts.CLIENTPANEL) {
+  if (pageProps.layout === Layouts.CLIENTPANEL) {
     page = (
       <PanelLayout>
         <Component {...pageProps} />
@@ -23,13 +28,14 @@ function App({ Component, pageProps, router }: AppProps) {
   } else {
     page = <Component {...pageProps} />
   }
-
   return (
-    <Provider store={store}>
-      <ThemeProvider attribute="class" defaultTheme="system">
-        {page}
-      </ThemeProvider>
-    </Provider>
+    <SWRConfig value={{ fetcher: fetcher }}>
+      <Provider store={store}>
+        <ThemeProvider attribute="class" defaultTheme="system">
+          {page}
+        </ThemeProvider>
+      </Provider>
+    </SWRConfig>
   )
 }
 

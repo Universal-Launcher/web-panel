@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import { globalReducer } from "./modules/global"
+import { globalReducer } from "./reducers/global"
 
 const reducers = {
   global: globalReducer,

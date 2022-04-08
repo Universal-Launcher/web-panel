@@ -6,6 +6,7 @@ import styles from "./styles.module.css"
 interface InputProps {
   id: string
   label: string
+  name?: string
   type?: React.HTMLInputTypeAttribute
   errors?: string[]
   value?: string
@@ -14,7 +15,17 @@ interface InputProps {
   autoComplete?: InputHTMLAttributes<HTMLInputElement>["autoComplete"]
 }
 
-function Input({ id, label, type, errors, value, onChange, children, autoComplete }: InputProps) {
+function Input({
+  id,
+  label,
+  name,
+  type,
+  errors,
+  value,
+  onChange,
+  children,
+  autoComplete,
+}: InputProps) {
   const { t } = useTranslation("clientpanel")
 
   return (
@@ -23,6 +34,7 @@ function Input({ id, label, type, errors, value, onChange, children, autoComplet
       <input
         type={type || "text"}
         id={id}
+        name={name}
         placeholder={label}
         value={value}
         onChange={onChange}

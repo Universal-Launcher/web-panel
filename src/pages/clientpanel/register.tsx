@@ -111,6 +111,7 @@ function Register() {
               id="username"
               label={t("register.username")}
               type="username"
+              name="username"
               value={formData.username}
               autoComplete="username"
               onChange={(e) => setFormData({ ...formData, username: e.target.value })}
@@ -121,6 +122,7 @@ function Register() {
               id="email"
               label={t("register.email")}
               type="email"
+              name="email"
               value={formData.email}
               autoComplete="email"
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -131,6 +133,7 @@ function Register() {
               id="password"
               label={t("register.password")}
               type="password"
+              name="new-password"
               value={formData.password}
               autoComplete="new-password"
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -146,6 +149,7 @@ function Register() {
               id="confirmation"
               label={t("register.confirmation")}
               type="password"
+              name="confirmation"
               autoComplete="new-password"
               value={formData.confirmation}
               onChange={(e) => setFormData({ ...formData, confirmation: e.target.value })}
