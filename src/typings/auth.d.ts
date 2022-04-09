@@ -3,7 +3,3 @@ export interface User {
   email: string
   username: string
 }
-
-export interface Session {
-  user?: User
-}

@@ -1,4 +1,3 @@
-import axios from "axios"
 import { GetStaticProps } from "next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import Head from "next/head"
@@ -12,10 +11,11 @@ import Button from "../../components/Button"
 import Footer from "../../components/Footer"
 import Input from "../../components/form/Input"
 import PasswordChecker from "../../components/form/PasswordChecker"
-import { useAuth } from "../../lib/auth/hooks"
-import { ErrorObject, isValidationError, parseValidationErrors } from "../../lib/errors"
+import { ErrorObject, isValidationError, parseValidationErrors } from "../../utils/errors"
 
 import styles from "../../styles/pages/clientpanel/Register.module.css"
+import { registerUser } from "../../store/actions/auth"
+import isApiError from "../../utils/api/helpers/isFetcherError"
 
 function Register() {
   const { t } = useTranslation("clientpanel")
@@ -43,13 +43,11 @@ function Register() {
 
   const [errors, setErrors] = React.useState<ErrorObject | undefined>(undefined)
 
-  const auth = useAuth()
-
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     try {
-      await auth.register(formData)
+      await registerUser(formData)()
       setErrors(undefined)
 
       if (router.query.redirect && typeof router.query.redirect === "string") {
@@ -58,13 +56,14 @@ function Register() {
         router.push("/clientpanel/")
       }
     } catch (error) {
-      if (axios.isAxiosError(error)) {
+      if (isApiError(error)) {
+        const errs = await error.response.json()
         if (isValidationError(error.response)) {
-          setErrors(parseValidationErrors(error.response?.data))
+          setErrors(parseValidationErrors(errs))
         } else {
-          if (error.response?.data?.error) {
+          if (errs?.error) {
             const errors: ErrorObject = {}
-            errors["main"] = [error.response.data.error]
+            errors["main"] = [errs.error]
             setErrors(errors)
           }
         }

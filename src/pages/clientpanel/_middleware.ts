@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getUser } from "../../lib/auth"
+import { User } from "../../typings/auth"
+import { fetcher } from "../../utils/api"
 
 export async function middleware(req: NextRequest) {
   const response = NextResponse.next()
@@ -9,8 +10,15 @@ export async function middleware(req: NextRequest) {
     req.nextUrl.pathname.includes("/clientpanel/register")
 
   try {
-    await getUser()
+    // fetch user
+    await fetcher<User>("/user/auth", {
+      context: req,
+    }).then((d) => {
+      console.log(d)
+      return d
+    })
   } catch (error) {
+    console.log(error)
     if (isAuthRoutes) {
       return response
     }
@@ -22,7 +30,7 @@ export async function middleware(req: NextRequest) {
   }
 
   if (isAuthRoutes) {
-    return NextResponse.redirect("/clientpanel/")
+    return NextResponse.redirect("/clientpanel")
   }
   return response
 }

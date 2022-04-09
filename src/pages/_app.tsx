@@ -4,16 +4,14 @@ import type { AppContext, AppProps } from "next/app"
 import i18nextConfig from "../../next-i18next.config"
 import { appWithTranslation } from "next-i18next"
 import useSWR, { SWRConfig } from "swr"
-import { fetcher } from "../lib/api"
+import { fetcher } from "../utils/api"
 import { Provider } from "react-redux"
 import { useStore } from "../store"
 import PanelLayout from "../components/layouts/PanelLayout"
 import { ThemeProvider } from "next-themes"
 import { Layouts } from "../layouts"
-import { default as NextApp } from "next/app"
-import cookies from "next-cookies"
 
-function App({ pageProps, Component }: AppProps & { token: string }) {
+function App({ pageProps, Component }: AppProps) {
   const store = useStore(pageProps.initialReduxState)
   useSWR("/", fetcher)
 
