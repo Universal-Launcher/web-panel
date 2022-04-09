@@ -13,7 +13,7 @@ import { Layouts } from "../layouts"
 
 function App({ pageProps, Component }: AppProps) {
   const store = useStore(pageProps.initialReduxState)
-  useSWR("/", fetcher)
+  fetcher("/")
 
   let page: JSX.Element
 

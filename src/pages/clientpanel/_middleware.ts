@@ -13,12 +13,8 @@ export async function middleware(req: NextRequest) {
     // fetch user
     await fetcher<User>("/user/auth", {
       context: req,
-    }).then((d) => {
-      console.log(d)
-      return d
     })
   } catch (error) {
-    console.log(error)
     if (isAuthRoutes) {
       return response
     }
@@ -30,7 +26,9 @@ export async function middleware(req: NextRequest) {
   }
 
   if (isAuthRoutes) {
-    return NextResponse.redirect("/clientpanel")
+    const url = req.nextUrl.clone()
+    url.pathname = "/clientpanel/"
+    return NextResponse.redirect(url)
   }
   return response
 }

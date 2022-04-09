@@ -13,13 +13,16 @@ interface FetcherOptions {
 export async function fetcher<T>(url: string, options?: FetcherOptions): Promise<T> {
   const u = combineURLs(process.env.NEXT_PUBLIC_API_URL, url)
 
-  let xsrf: string = ""
+  let xsrf: string = "",
+    session_id: string = ""
 
   if (typeof document !== "undefined") {
     xsrf = cookie.parse(document.cookie)["universal-launcher-csrf"]
+    session_id = cookie.parse(document.cookie)["id"]
   } else {
     if (options?.context) {
       xsrf = options.context.cookies["universal-launcher-csrf"]
+      session_id = options.context.cookies["id"]
     }
   }
 
@@ -31,6 +34,7 @@ export async function fetcher<T>(url: string, options?: FetcherOptions): Promise
       headers: {
         "Content-Type": "application/json",
         "X-XSRF-TOKEN": xsrf,
+        "Cookie": session_id?.length > 0 ? `id=${session_id}` : "",
       },
     })
 
