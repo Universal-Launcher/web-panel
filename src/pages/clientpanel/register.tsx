@@ -8,7 +8,7 @@ import { UserPlus } from "react-feather"
 import { Trans, useTranslation } from "react-i18next"
 import Alert from "../../components/Alert"
 import Button from "../../components/Button"
-import Footer from "../../components/Footer"
+import Footer from "../../components/base/Footer"
 import Input from "../../components/form/Input"
 import PasswordChecker from "../../components/form/PasswordChecker"
 import { ErrorObject, isValidationError, parseValidationErrors } from "../../utils/errors"
@@ -58,7 +58,7 @@ function Register() {
     } catch (error) {
       if (isApiError(error)) {
         const errs = await error.response.json()
-        if (isValidationError(error.response)) {
+        if (isValidationError(error.response.status, errs)) {
           setErrors(parseValidationErrors(errs))
         } else {
           if (errs?.error) {

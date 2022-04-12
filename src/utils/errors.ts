@@ -1,5 +1,3 @@
-import { AxiosResponse } from "axios"
-
 export interface ValidationErrors {
   error: {
     code: number
@@ -14,8 +12,8 @@ export interface ValidationErrors {
   }
 }
 
-export function isValidationError(response?: AxiosResponse<ValidationErrors>): boolean {
-  return response?.status === 400 && !!response.data.error?.fields
+export function isValidationError(statusCode: number, error?: ValidationErrors): boolean {
+  return statusCode === 400 && !!error?.error.code
 }
 
 export type ErrorObject = Partial<{ [key: string]: string[] }>

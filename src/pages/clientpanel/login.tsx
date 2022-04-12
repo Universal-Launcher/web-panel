@@ -48,7 +48,7 @@ function Login() {
     } catch (error) {
       if (isApiError(error)) {
         const errs = await error.response.json()
-        if (isValidationError(error.response)) {
+        if (isValidationError(error.response.status, errs)) {
           setErrors(parseValidationErrors(errs))
         } else {
           if (errs?.error) {
