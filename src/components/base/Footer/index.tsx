@@ -3,7 +3,6 @@ import { GitHub } from "react-feather"
 import { Discord } from "@icons-pack/react-simple-icons"
 import { Trans, useTranslation } from "react-i18next"
 import Link from "next/link"
-import className from "classnames"
 
 import styles from "./styles.module.css"
 import ThemeToggler from "./ThemeToggler"

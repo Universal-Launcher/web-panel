@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPageContext } from "next"
+import { GetStaticProps } from "next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import Head from "next/head"
 import React from "react"

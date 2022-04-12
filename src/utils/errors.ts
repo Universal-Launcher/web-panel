@@ -18,7 +18,7 @@ export function isValidationError(response?: AxiosResponse<ValidationErrors>): b
   return response?.status === 400 && !!response.data.error?.fields
 }
 
-export type ErrorObject = Partial<{[key: string]: string[]}>
+export type ErrorObject = Partial<{ [key: string]: string[] }>
 
 export function parseValidationErrors({ error }: ValidationErrors): ErrorObject {
   const parsed_errors: ErrorObject = {}

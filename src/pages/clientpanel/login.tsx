@@ -3,7 +3,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import Head from "next/head"
 import React, { useEffect } from "react"
 import { useTranslation } from "react-i18next"
-import Footer from "../../components/Footer"
+import Footer from "../../components/base/Footer"
 
 import styles from "../../styles/pages/clientpanel/Login.module.css"
 import Input from "../../components/form/Input"
@@ -124,7 +124,8 @@ function Login() {
 
             <p className={styles.registerTips}>
               <Trans t={t} i18nKey="login.no_account">
-                Doesn't have an account ? <NextLnk href="/clientpanel/register">Register</NextLnk>
+                Doesn&#39;t have an account ?{" "}
+                <NextLnk href="/clientpanel/register">Register</NextLnk>
               </Trans>
             </p>
           </form>
