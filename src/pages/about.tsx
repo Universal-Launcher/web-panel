@@ -3,8 +3,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import Head from "next/head"
 import React from "react"
 import { useTranslation } from "react-i18next"
-import Footer from "../components/Footer"
-import Navbar from "../components/Navbar"
+import Footer from "../components/base/Footer"
+import Navbar from "../components/base/Navbar"
 
 function About() {
   const { t } = useTranslation()

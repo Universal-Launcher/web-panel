@@ -5,8 +5,8 @@ import React from "react"
 import { Download } from "react-feather"
 import { useTranslation } from "react-i18next"
 import Button from "../components/Button"
-import Footer from "../components/Footer"
-import Navbar from "../components/Navbar"
+import Footer from "../components/base/Footer"
+import Navbar from "../components/base/Navbar"
 
 import styles from "../styles/pages/Download.module.css"
 

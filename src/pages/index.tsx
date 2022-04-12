@@ -1,11 +1,11 @@
 import React from "react"
 import Head from "next/head"
 import styles from "../styles/Home.module.css"
-import Navbar from "../components/Navbar"
+import Navbar from "../components/base/Navbar"
 import { GetStaticProps } from "next"
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
-import Footer from "../components/Footer"
+import Footer from "../components/base/Footer"
 import { useTranslation } from "react-i18next"
 
 function Home() {

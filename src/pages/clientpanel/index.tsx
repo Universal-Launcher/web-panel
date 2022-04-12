@@ -3,6 +3,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import Head from "next/head"
 import React from "react"
 import { useTranslation } from "react-i18next"
+import { Layouts } from "../../layouts"
 
 function ClientPanel() {
   const { t } = useTranslation("clientpanel")
@@ -23,6 +24,7 @@ function ClientPanel() {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
+    layout: Layouts.CLIENTPANEL,
     ...(await serverSideTranslations(locale as string, ["main", "clientpanel"])),
   },
 })
