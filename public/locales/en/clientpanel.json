@@ -44,5 +44,10 @@
     "submitBtn": "Create account",
     "already_account": "Already have an account ? <1>Login</1>",
     "username": "Username"
+  },
+  "clientpanel": {
+    "main": {
+      "title": "Clientpanel"
+    }
   }
 }

@@ -10,7 +10,7 @@ function ClientPanel() {
   return (
     <>
       <Head>
-        <title>{t("login.title")}</title>
+        <title>{t("clientpanel.main.title")}</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

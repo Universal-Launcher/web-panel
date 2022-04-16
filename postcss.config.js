@@ -1,15 +1,14 @@
 module.exports = {
   plugins: {
-    'postcss-import': {},
-    'postcss-for': {},
-    'postcss-calc': {},
-    'tailwindcss/nesting': {},
-    'tailwindcss': {},
-    'postcss-preset-env': {
+    "postcss-import": {},
+    "postcss-calc": {},
+    "tailwindcss/nesting": {},
+    "tailwindcss": {},
+    "postcss-preset-env": {
       features: {
-        'nesting-rules': true,
-      }
+        "nesting-rules": true,
+      },
     },
-    'autoprefixer': {},
+    "autoprefixer": {},
   },
 }

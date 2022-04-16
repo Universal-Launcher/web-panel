@@ -44,5 +44,10 @@
     "already_account": "Déjà un compte ? <1>Connexion</1>",
     "email": "Adresse E-Mail",
     "title": "S'inscrire"
+  },
+  "clientpanel": {
+    "main": {
+      "title": "Panel client"
+    }
   }
 }

@@ -4,7 +4,7 @@ import Head from "next/head"
 import React from "react"
 import { Download } from "react-feather"
 import { useTranslation } from "react-i18next"
-import Button from "../components/Button"
+import Button from "../components/common/Button"
 import Footer from "../components/base/Footer"
 import Navbar from "../components/base/Navbar"
 
